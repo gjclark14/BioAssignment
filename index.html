@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gabriel Clark">
+    <meta name="description" content="Webpage to take in two strings and calculate the edit distance between them">
+    <title>Edit distance calculator</title>
+    <link href="styles/gruvbox_dark.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <h1>Edit Distance Calculator</h1>
+    <img src="images/dna.jpg" lang="en" alt="DNA">
+</header>
+
+<main>
+    <article>
+        <p>Please input two words for the edit distance (30 character max):</p>
+            <form id="words" method="post" action="">
+                <div>
+                    <label for="word1">First name:</label>
+                    <input type="text" id="word1" name="word1"><br><br>
+                    <label for="word2">Last name:</label>
+                    <input type="text" id="word2" name="word2"><br><br>
+
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        <div id="tableView">
+            <p>Table View Area</p>
+        </div>
+    </article>
+</main>
+
+<script src="scripts/main.js" defer></script>
+</body>
+</html>

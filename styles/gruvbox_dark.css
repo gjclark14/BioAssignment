@@ -1,0 +1,205 @@
+/* || General setup */
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+    background-color: var(--bg4);
+}
+
+body {
+    width: 70%;
+    min-width: 800px;
+    margin: 0 auto;
+}
+
+/* || typography */
+
+h1, h2, h3 {
+    font-family: 'Cinzel Decorative', cursive;
+    color: var(--aqua0);
+}
+
+p, li, td, label {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: var(--fg0);
+}
+
+a {
+    color: var(--orange0);
+}
+
+input {
+    background-color: var(--orange0);
+    color: var(--bg0);
+    font-size: 3rem;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    text-shadow: 2px 2px 10px black;
+}
+
+h2 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+p, li, label {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 20px 0;
+}
+
+label {
+    font-size: 3rem;
+    color: var(--orange1);
+}
+
+td {
+    font-size: 6rem;
+    color: var(--purple0);
+}
+
+/* || header layout */
+
+header {
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/*
+body > * {
+  background-color: red;
+  padding: 1%;
+}
+ */
+
+main, header, nav, article, aside, footer, section {
+    /* The lack of rgba for hex requires manual setting of --bg1*/
+    background-color: rgba(60, 56, 54, 0.5);
+
+    padding: 1%;
+}
+
+h1 {
+    flex: 5;
+    text-transform: uppercase;
+}
+
+header img {
+    display: block;
+    height: 60px;
+    padding-top: 20.15px;
+}
+
+nav {
+    height: 50px;
+    flex: 100%;
+    display: flex;
+}
+
+nav ul {
+    padding: 0;
+    list-style-type: none;
+    flex: 2;
+    display: flex;
+}
+
+nav li {
+    display: inline;
+    text-align: center;
+    flex: 1;
+}
+
+nav a, nav span {
+    display: inline-block;
+    font-size: 2rem;
+    height: 3rem;
+    line-height: 1.7;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--aqua1);
+}
+
+/* || main layout */
+
+main {
+    display: flex;
+}
+
+article, section {
+    flex: 4;
+}
+
+aside {
+    flex: 1;
+    margin-left: 10px;
+    padding: 1%;
+}
+
+aside a {
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+aside img {
+    max-width: 100%;
+}
+
+footer {
+    margin-top: 10px;
+}
+
+.\.input-prompt{
+    min-width: 150px;
+}
+
+pre {
+    display: block;
+    white-space: pre;
+    flex: 1;
+    margin: 1em 0;
+}
+
+:root {
+    --bg0: #282828;
+    --bg1: #3c3836;
+    --bg2: #504945;
+    --bg3: #665c54;
+    --bg4: #7c6f64;
+    --fg0: #fbf1cd;
+    --fg1: #ebdbb2;
+    --fg2: #d5c4a1;
+    --fg3: #bdae93;
+    --fg4: #a89984;
+    --red0: #cc241d;
+    --red1: #fb3934;
+    --green0: #98971a;
+    --green1: #b8bb26;
+    --yellow0: #d79921;
+    --yellow1: #fabd2f;
+    --blue0: #458588;
+    --blue1: #83a598;
+    --purple0: #b16286;
+    --purple1: #d3869b;
+    --aqua0: #689d6a;
+    --aqua1: #8ec07c;
+    --orange0: #d65d0e;
+    --orange1: #fe8019;
+    --gray: #a89984;
+}
