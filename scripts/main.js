@@ -8,19 +8,19 @@ if (typeof (document) !== "undefined") {
     let words = document.getElementById("words");
     words.addEventListener("submit", function (e){
 
-        vertString = document.getElementById("word1").value;
-        horizString = document.getElementById("word2").value;
+        vertString = document.getElementById("word2").value;
+        horizString = document.getElementById("word1").value;
 
         // alert(vertString.concat("\n").concat(horizString).concat("\n"));
-        createTable(vertString, horizString);
+        createTable();
         e.preventDefault();
     });
 
 
 
-    function createTable(word1, word2) {
+    function createTable() {
         let para = document.createElement("p");
-        let node = document.createTextNode("This is new.");
+        let node = document.createTextNode("Alignment path marked in blue");
         para.appendChild(node);
 
         let element = document.getElementById("tableView");
@@ -29,36 +29,47 @@ if (typeof (document) !== "undefined") {
         const COLS = horizString.length + 2;
 
         let matrix = createMatrix(ROWS, COLS);
-        matrix = setMatrixHeaders(matrix, ROWS, COLS)
-        matrix = calculateEditDistance(matrix, ROWS, COLS)
+        matrix = setMatrixHeaders(matrix, ROWS, COLS);
+        matrix = calculateEditDistance(matrix, ROWS, COLS);
+
         let table = makeTable(matrix);
 
-        calculateAlignments(table, ROWS, COLS);
+        calculateAlignments(table);
         element.appendChild(table);
     }
 
-    function calculateAlignments(matrix, row, col) {
+    // split this function into two:
+    // one for horizontal checks
+    // one for vertical checks
+    function calculateAlignments(matrix) {
+        // vertical movements are insertions to the second string
+        // horizontal movements are insertions to the first sting
 
-        let i = row - 2;
-        let j = col - 2;
-
-        row = matrix.rows[5];
-        col = matrix.rows[3];
-
-        let y;
-        for(let i = 2; i < col; i++) {
-            for(let j = 2; j < row; j++) {
-                y = matrix[i].cells;
-                y[j].style.color = "#83a598";
+        let r = matrix.rows.length - 1;
+        let c = matrix.rows[r].cells.length - 1;
+        matrix.rows[matrix.rows.length-1].cells[matrix.rows[0].cells.length-1].style.color = "#83a598";
+        while(r > 1) {
+            while( c > 1) {
+                let diag = matrix.rows[r-1].cells[c-1].innerHTML;
+                let cur = matrix.rows[r].cells[c].innerHTML;
+                let horiz = matrix.rows[r].cells[c-1].innerHTML;
+                if(diag === cur) {
+                    matrix.rows[r-1].cells[c-1].style.color = "#83a598";
+                    r--;
+                    c--;
+                    break;
+                }
+                if(parseInt(horiz) === (cur-"1")) {
+                    matrix.rows[r].cells[c-1].style.color = "#83a598";
+                    c--;
+                }
+                else /*(horiz === (cur-1))*/ {
+                    matrix.rows[r-1].cells[c].style.color = "#83a598";
+                    r--;
+                }
             }
         }
-
-        matrix[5].cells[4].style.color = "#83a598";
-
-        // matrix[i][j].style.backgroundColor    = "#83a598";
-        // matrix[i][j].style.color = "";
         return matrix;
-
     }
 
     function calculateEditDistance(matrix, row, col) {
