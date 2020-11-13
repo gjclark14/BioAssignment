@@ -31,20 +31,33 @@ if (typeof (document) !== "undefined") {
         let matrix = createMatrix(ROWS, COLS);
         matrix = setMatrixHeaders(matrix, ROWS, COLS)
         matrix = calculateEditDistance(matrix, ROWS, COLS)
+        let table = makeTable(matrix);
 
-        element.appendChild(makeTable(matrix));
+        calculateAlignments(table, ROWS, COLS);
+        element.appendChild(table);
     }
 
     function calculateAlignments(matrix, row, col) {
 
-        for(let i = row - 1; i >= 1; i--) {
-            for(let j = col - 1; j >= 1; j--) {
-                movement
+        let i = row - 2;
+        let j = col - 2;
 
+        row = matrix.rows[5];
+        col = matrix.rows[3];
+
+        let y;
+        for(let i = 2; i < col; i++) {
+            for(let j = 2; j < row; j++) {
+                y = matrix[i].cells;
+                y[j].style.color = "#83a598";
             }
-
         }
 
+        matrix[5].cells[4].style.color = "#83a598";
+
+        // matrix[i][j].style.backgroundColor    = "#83a598";
+        // matrix[i][j].style.color = "";
+        return matrix;
 
     }
 
