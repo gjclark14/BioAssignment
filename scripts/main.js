@@ -66,7 +66,7 @@ if (typeof (document) !== "undefined") {
                 }
                 flagged = 1;
             }
-            if (vertString.charAt(c - 1) === horizString.charAt(r - 1) && r < R && c < C) {
+            if (vertString.charAt(c - 2) === horizString.charAt(r - 2) && r < R && c < C) {
                 matrix.rows[--r].cells[--c].style.color = "#83a598";
                 vstring += vertString.charAt(c - 1);
                 hstring += horizString.charAt(r - 1);
